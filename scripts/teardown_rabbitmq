@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Remove rabbitmq queues
+# Parameter: vm id
+
+set -eu
+
+delete_queue()
+{
+    name=$1
+    curl -u "$SENZA_AMQP_USERNAME:$SENZA_AMQP_PASSWORD" -XDELETE -H "content-type:application/json" "http://$SENZA_AMQP_HOSTNAME:15672/api/queues/%2f/$name"
+}
+
+vm_id=$1
+
+queues="android-events.$vm_id.battery android-events.$vm_id.gps android-events.$vm_id.recording android-events.$vm_id.gsm android-events.$vm_id.camera android-events.$vm_id.nfc android-events.$vm_id.sensors"
+for queue in $queues
+do
+    delete_queue "$queue"
+done
