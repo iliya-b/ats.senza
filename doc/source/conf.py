@@ -65,7 +65,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'ats-senza'
-copyright = '2015, author-name'
+copyright = '2016, AiC Project'
 author = 'AiC Project'
 
 # The version info for the project you're documenting, acts as replacement for
